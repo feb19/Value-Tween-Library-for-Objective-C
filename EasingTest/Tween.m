@@ -236,16 +236,16 @@ static NSMutableArray *tweens_ = nil;
 
 + (double)easeInQuint:(double)t b:(double)b c:(double)c d:(double)d
 {
-    return c*(t/=d)*t*t*t + b;
+    return c*(t/=d)*t*t*t*t + b;
 }
 + (double)easeOutQuint:(double)t b:(double)b c:(double)c d:(double)d
 {
-    return -c * ((t=t/d-1)*t*t*t - 1) + b;
+    return c*((t=t/d-1)*t*t*t*t + 1) + b;
 }
 + (double)easeInOutQuint:(double)t b:(double)b c:(double)c d:(double)d
 {
-    if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
-    return -c/2 * ((t-=2)*t*t*t - 2) + b;
+    if((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
+    return c/2*((t-=2)*t*t*t*t + 2) + b;
 }
 
 + (double)easeInSine:(double)t b:(double)b c:(double)c d:(double)d

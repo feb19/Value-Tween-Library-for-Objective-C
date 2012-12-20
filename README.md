@@ -12,10 +12,21 @@ Example Usage
 =============
 
 ```objc
+#import "Tween.h"
+#import "TweenObject.h"
 
 - (IBAction)buttonWasTapped:(id)sender
 {
-    [Tween addTween:self tweenId:0  startValue:10 endValue:290 time:2 delay:0 easing:@"easeNone" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
+    [Tween addTween:self
+            tweenId:0
+         startValue:10
+           endValue:290
+               time:2
+              delay:0
+             easing:@"easeNone"
+           startSEL:nil
+          updateSEL:@selector(update:)
+             endSEL:@selector(end:)];
 }
 
 - (void)update:(TweenObject *)tween
