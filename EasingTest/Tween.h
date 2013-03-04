@@ -12,6 +12,9 @@
 
 @interface Tween : NSObject
 
+// add
++ (void)addTween:(id)parent tweenId:(int)tweenId startValue:(double)startValue endValue:(double)endValue time:(double)time delay:(double)delay easing:(NSString *)easing param:(NSMutableDictionary *)param startSEL:(SEL)startSEL updateSEL:(SEL)updateSEL endSEL:(SEL)endSEL;
+
 + (void)addTween:(id)parent tweenId:(int)tweenId startValue:(double)startValue endValue:(double)endValue time:(double)time delay:(double)delay easing:(NSString *)easing startSEL:(SEL)startSEL updateSEL:(SEL)updateSEL endSEL:(SEL)endSEL;
 + (void) updateAnimations;
 

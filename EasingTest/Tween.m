@@ -13,7 +13,25 @@
 static NSTimer* timer_ = nil;
 static NSMutableArray *tweens_ = nil;
 
+#pragma mark - --------------------------------------------------------------------------
+#pragma mark - public
+
 + (void)addTween:(id)parent tweenId:(int)tweenId startValue:(double)startValue endValue:(double)endValue time:(double)time delay:(double)delay easing:(NSString *)easing startSEL:(SEL)startSEL updateSEL:(SEL)updateSEL endSEL:(SEL)endSEL
+{
+    [Tween addTween:parent
+            tweenId:tweenId
+         startValue:startValue
+           endValue:endValue
+               time:time
+              delay:delay
+             easing:easing
+              param:nil
+           startSEL:startSEL
+          updateSEL:updateSEL
+             endSEL:endSEL];
+}
+
++ (void)addTween:(id)parent tweenId:(int)tweenId startValue:(double)startValue endValue:(double)endValue time:(double)time delay:(double)delay easing:(NSString *)easing param:(NSMutableDictionary *)param startSEL:(SEL)startSEL updateSEL:(SEL)updateSEL endSEL:(SEL)endSEL
 {
     if (timer_ == nil) {
         timer_ = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60.0
@@ -54,6 +72,7 @@ static NSMutableArray *tweens_ = nil;
     tween.time = time;
     tween.delay = delay;
     tween.easing = easing;
+    tween.param = param;
     tween.selStart = selStart;
     tween.selUpdate = selUpdate;
     tween.selEnd = selEnd;
@@ -61,6 +80,9 @@ static NSMutableArray *tweens_ = nil;
     tween.ended = NO;
     [tweens_ addObject:tween];
 }
+
+#pragma mark - --------------------------------------------------------------------------
+#pragma mark - private
 
 + (void) updateAnimations {
     double currentTime = CACurrentMediaTime();
@@ -186,6 +208,10 @@ static NSMutableArray *tweens_ = nil;
         i--;
     }
 }
+
+
+#pragma mark - --------------------------------------------------------------------------
+#pragma mark - easing
 
 + (double)easeNone:(double)t b:(double)b c:(double)c d:(double)d
 {
