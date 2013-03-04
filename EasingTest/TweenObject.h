@@ -24,5 +24,6 @@
 @property (nonatomic, retain) id selEnd;
 @property (nonatomic, assign) double startTime;
 @property (nonatomic, assign) double currentValue;
+@property (nonatomic, retain) NSMutableDictionary * param;
 
 @end
