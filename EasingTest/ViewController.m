@@ -50,6 +50,30 @@
     [Tween addTween:self tweenId:17 startValue:10 endValue:290 time:2 delay:0 easing:@"easeInBounce" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
     [Tween addTween:self tweenId:18 startValue:10 endValue:290 time:2 delay:0 easing:@"easeOutBounce" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
     [Tween addTween:self tweenId:19 startValue:10 endValue:290 time:2 delay:0 easing:@"easeInOutBounce" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
+    
+    // add test
+    CGSize size = CGSizeMake(100, 100);
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(([UIScreen mainScreen].bounds.size.width - size.width) * 0.5,
+                                                             ([UIScreen mainScreen].bounds.size.height - size.height) * 0.5,
+                                                             size.width,
+                                                             size.height)];
+    view.backgroundColor = [UIColor blueColor];
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    transform = CGAffineTransformScale(transform, 0, 0);
+    view.transform = transform;    
+    [self.view addSubview:view];
+    
+    [Tween addTween:self
+            tweenId:20
+         startValue:0
+           endValue:1
+               time:1.0
+              delay:0
+             easing:@"easeOutBounce"
+              param:[@{ @"view":view } mutableCopy]
+           startSEL:nil
+          updateSEL:@selector(update:)
+             endSEL:@selector(end:)];
 }
 
 - (void)update:(TweenObject *)tween
@@ -74,6 +98,13 @@
         case 16: { self.view17.frame = CGRectMake(tween.currentValue,405,20,20); break; }
         case 17: { self.view18.frame = CGRectMake(tween.currentValue,430,20,20); break; }
         case 18: { self.view19.frame = CGRectMake(tween.currentValue,455,20,20); break; }
+        case 20:
+        {
+            UIView * view = [tween.param objectForKey:@"view"];
+            CGAffineTransform transform = CGAffineTransformIdentity;
+            transform = CGAffineTransformScale(transform, tween.currentValue, tween.currentValue);
+            view.transform = transform;
+        }
     }
 }
 - (void)end:(TweenObject *)tween
@@ -98,6 +129,12 @@
         case 16: { self.view17.frame = CGRectMake(tween.currentValue,405,20,20); break; }
         case 17: { self.view18.frame = CGRectMake(tween.currentValue,430,20,20); break; }
         case 18: { self.view19.frame = CGRectMake(tween.currentValue,455,20,20); break; }
+        case 20:
+        {
+            UIView * view = [tween.param objectForKey:@"view"];
+            [view removeFromSuperview];
+            view = nil;
+        }
     }
 }
 - (void)didReceiveMemoryWarning
