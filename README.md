@@ -77,7 +77,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-Updated
+Thanks
 =============
 Thanks mokagio for solve some problems of llvm5 warning.
 https://github.com/mokagio
