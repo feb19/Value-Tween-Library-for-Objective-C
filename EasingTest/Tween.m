@@ -13,8 +13,16 @@
 static NSTimer* timer_ = nil;
 static NSMutableArray *tweens_ = nil;
 
-#pragma mark - --------------------------------------------------------------------------
 #pragma mark - public
+
++ (void)clear
+{
+    [tweens_ removeAllObjects];
+    tweens_ = nil;
+    
+    [timer_ invalidate];
+    timer_ = nil;
+}
 
 + (void)addTween:(id)parent tweenId:(int)tweenId startValue:(double)startValue endValue:(double)endValue time:(double)time delay:(double)delay easing:(NSString *)easing startSEL:(SEL)startSEL updateSEL:(SEL)updateSEL endSEL:(SEL)endSEL
 {
@@ -35,10 +43,10 @@ static NSMutableArray *tweens_ = nil;
 {
     if (timer_ == nil) {
         timer_ = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60.0
-                                                       target:self
-                                                     selector:@selector(updateAnimations)
-                                                     userInfo:nil
-                                                      repeats:TRUE];
+                                                  target:self
+                                                selector:@selector(updateAnimations)
+                                                userInfo:nil
+                                                 repeats:TRUE];
         tweens_ = [NSMutableArray array];
     }
     
@@ -81,7 +89,6 @@ static NSMutableArray *tweens_ = nil;
     [tweens_ addObject:tween];
 }
 
-#pragma mark - --------------------------------------------------------------------------
 #pragma mark - private
 
 + (void) updateAnimations {
@@ -95,16 +102,16 @@ static NSMutableArray *tweens_ = nil;
                 tween.currentValue = tween.startValue;
                 id selStart = tween.selStart;
                 if (selStart != [NSNull null]) {
-                    #pragma clang diagnostic push
-                    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
                     [parent performSelector:NSSelectorFromString(selStart) withObject:tween];
-                    #pragma clang diagnostic pop
+#pragma clang diagnostic pop
                 }
                 tween.started = YES;
             }
             
             t = currentTime - delay - tween.startTime;
-    
+            
             double d = tween.time;
             double b = tween.startValue;
             double c = tween.endValue - b;
@@ -174,34 +181,34 @@ static NSMutableArray *tweens_ = nil;
             } else if ([st isEqualToString:@"easeInOutBounce"]) {
                 currentValue = [Tween easeInOutBounce:t b:b c:c d:d];
             }
-    
+            
             if (t >= d) {
                 tween.currentValue = tween.endValue;
                 id selEnd = tween.selEnd;
                 if (selEnd != [NSNull null]) {
-                    #pragma clang diagnostic push
-                    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
                     [parent performSelector:NSSelectorFromString(selEnd) withObject:tween];
-                    #pragma clang diagnostic pop
+#pragma clang diagnostic pop
                 }
                 tween.ended = YES;
             } else {
                 tween.currentValue = currentValue;
                 id selUpdate = tween.selUpdate;
                 if (selUpdate != [NSNull null]) {
-                    #pragma clang diagnostic push
-                    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
                     [parent performSelector:NSSelectorFromString(selUpdate) withObject:tween];
-                    #pragma clang diagnostic pop
+#pragma clang diagnostic pop
                 }
             }
         }
-
+        
     }
-
-    int i = [tweens_ count] - 1;
+    
+    int i = [tweens_ count];
     while (i > 0) {
-        TweenObject *tween = [tweens_ objectAtIndex:i];
+        TweenObject *tween = [tweens_ objectAtIndex:i-1];
         if (tween.ended) {
             [tweens_ removeObject:tween];
         }
@@ -210,7 +217,6 @@ static NSMutableArray *tweens_ = nil;
 }
 
 
-#pragma mark - --------------------------------------------------------------------------
 #pragma mark - easing
 
 + (double)easeNone:(double)t b:(double)b c:(double)c d:(double)d
@@ -220,58 +226,84 @@ static NSMutableArray *tweens_ = nil;
 
 + (double)easeInQuad:(double)t b:(double)b c:(double)c d:(double)d
 {
-    return c*(t/=d)*t + b;
+    t /= d;
+    return c*t*t + b;
 }
 + (double)easeOutQuad:(double)t b:(double)b c:(double)c d:(double)d
 {
-    return -c *(t/=d)*(t-2) + b;
+    t /= d;
+    return -c *t*(t-2) + b;
 }
 + (double)easeInOutQuad:(double)t b:(double)b c:(double)c d:(double)d
 {
-    if ((t/=d/2) < 1) return c/2*t*t + b;
-    return -c/2 * ((--t)*(t-2) - 1) + b;
+    t /= d/2;
+    if (t < 1) {
+        return c/2*t*t + b;
+    }
+    t--;
+    return -c/2 * (t*(t-2) - 1) + b;
 }
 
 + (double)easeInCubic:(double)t b:(double)b c:(double)c d:(double)d
 {
-    return c*(t/=d)*t*t + b;
+    t/=d;
+    return c*t*t*t + b;
 }
 + (double)easeOutCubic:(double)t b:(double)b c:(double)c d:(double)d
 {
-    return c*((t=t/d-1)*t*t + 1) + b;
+    t = t/d-1;
+    return c*(t*t*t + 1) + b;
 }
 + (double)easeInOutCubic:(double)t b:(double)b c:(double)c d:(double)d
 {
-    if ((t/=d/2) < 1) return c/2*t*t*t + b;
-    return c/2*((t-=2)*t*t + 2) + b;
+    t /= d/2;
+    if (t < 1) {
+        return c/2*t*t*t + b;
+    }
+    
+    t -= 2;
+    return c/2*(t*t*t + 2) + b;
 }
 
 + (double)easeInQuart:(double)t b:(double)b c:(double)c d:(double)d
 {
-    return c*(t/=d)*t*t*t + b;
+    t /= d;
+    return c*t*t*t*t + b;
 }
 + (double)easeOutQuart:(double)t b:(double)b c:(double)c d:(double)d
 {
-    return -c * ((t=t/d-1)*t*t*t - 1) + b;
+    t = t/d-1;
+    return -c * (t*t*t*t - 1) + b;
 }
 + (double)easeInOutQuart:(double)t b:(double)b c:(double)c d:(double)d
 {
-    if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
-    return -c/2 * ((t-=2)*t*t*t - 2) + b;
+    t /= d/2;
+    if (t < 1) {
+        return c/2*t*t*t*t + b;
+    }
+    
+    t-=2;
+    return -c/2 * (t*t*t*t - 2) + b;
 }
 
 + (double)easeInQuint:(double)t b:(double)b c:(double)c d:(double)d
 {
-    return c*(t/=d)*t*t*t*t + b;
+    t /= d;
+    return c*t*t*t*t*t + b;
 }
 + (double)easeOutQuint:(double)t b:(double)b c:(double)c d:(double)d
 {
-    return c*((t=t/d-1)*t*t*t*t + 1) + b;
+    t = t/d-1;
+    return c*(t*t*t*t*t + 1) + b;
 }
 + (double)easeInOutQuint:(double)t b:(double)b c:(double)c d:(double)d
 {
-    if((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
-    return c/2*((t-=2)*t*t*t*t + 2) + b;
+    t /= d/2;
+    if(t < 1) {
+        return c/2*t*t*t*t*t + b;
+    }
+    t -= 2;
+    return c/2*(t*t*t*t*t + 2) + b;
 }
 
 + (double)easeInSine:(double)t b:(double)b c:(double)c d:(double)d
@@ -305,16 +337,22 @@ static NSMutableArray *tweens_ = nil;
 
 + (double)easeInCirc:(double)t b:(double)b c:(double)c d:(double)d
 {
-    return -c * (sqrt(1 - (t/=d)*t) - 1) + b;
+    t /= d;
+    return -c * (sqrt(1 - t*t) - 1) + b;
 }
 + (double)easeOutCirc:(double)t b:(double)b c:(double)c d:(double)d
 {
-    return c * sqrt(1 - (t=t/d-1)*t) + b;
+    t = t/d-1;
+    return c * sqrt(1 - t*t) + b;
 }
 + (double)easeInOutCirc:(double)t b:(double)b c:(double)c d:(double)d
 {
-    if ((t/=d/2) < 1) return -c/2 * (sqrt(1 - t*t) - 1) + b;
-    return c/2 * (sqrt(1 - (t-=2)*t) + 1) + b;
+    t /= d/2;
+    if (t < 1) {
+        return -c/2 * (sqrt(1 - t*t) - 1) + b;
+    }
+    t-=2;
+    return c/2 * (sqrt(1 - t*t) + 1) + b;
 }
 
 + (double)easeInElastic:(double)t b:(double)b c:(double)c d:(double)d
@@ -325,7 +363,8 @@ static NSMutableArray *tweens_ = nil;
     if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
     if (a < abs(c)) { a=c; s=p/4; }
     else s = p/(2*3.1419) * asin (c/a);
-    return -(a*pow(2,10*(t-=1)) * sin( (t*d-s)*(2*3.1419)/p )) + b;
+    t--;
+    return -(a*pow(2,10*t) * sin( (t*d-s)*(2*3.1419)/p )) + b;
 }
 + (double)easeOutElastic:(double)t b:(double)b c:(double)c d:(double)d
 {
@@ -345,25 +384,38 @@ static NSMutableArray *tweens_ = nil;
     if (t==0) return b;  if ((t/=d/2)==2) return b+c;  if (!p) p=d*(.3*1.5);
     if (a < abs(c)) { a=c; s=p/4; }
     else s = p/(2*3.1419) * asin (c/a);
-    if (t < 1) return -.5*(a*pow(2,10*(t-=1)) * sin( (t*d-s)*(2*3.1419)/p )) + b;
-    return a*pow(2,-10*(t-=1)) * sin( (t*d-s)*(2*3.1419)/p )*.5 + c + b;
+    if (t < 1) {
+        t--;
+        return -.5*(a*pow(2,10*t) * sin( (t*d-s)*(2*3.1419)/p )) + b;
+    }
+    t--;
+    return a*pow(2,-10*t) * sin( (t*d-s)*(2*3.1419)/p )*.5 + c + b;
 }
 
 + (double)easeInBack:(double)t b:(double)b c:(double)c d:(double)d
 {
     double s = 1.70158;
-    return c*(t/=d)*t*((s+1)*t - s) + b;
+    t /= d;
+    return c*t*t*((s+1)*t - s) + b;
 }
 + (double)easeOutBack:(double)t b:(double)b c:(double)c d:(double)d
 {
     double s = 1.70158;
-    return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+    t = t/d-1;
+    return c*(t*t*((s+1)*t + s) + 1) + b;
 }
 + (double)easeInOutBack:(double)t b:(double)b c:(double)c d:(double)d
 {
     double s = 1.70158;
-    if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
-    return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
+    double k = 1.525;
+    t /= d/2;
+    s *= k;
+    if (t < 1) {
+        return c/2*(t*t*((s+1)*t - s)) + b;
+    } else {
+        t -= 2;
+        return c/2*(t*t*((s+1)*t + s) + 2) + b;
+    }
 }
 
 + (double)easeInBounce:(double)t b:(double)b c:(double)c d:(double)d
@@ -372,14 +424,18 @@ static NSMutableArray *tweens_ = nil;
 }
 + (double)easeOutBounce:(double)t b:(double)b c:(double)c d:(double)d
 {
-    if ((t/=d) < (1/2.75)) {
+    double k = 2.75;
+    if ((t/=d) < (1/k)) {
         return c*(7.5625*t*t) + b;
-    } else if (t < (2/2.75)) {
-        return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
-    } else if (t < (2.5/2.75)) {
-        return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+    } else if (t < (2/k)) {
+        t-=1.5/k;
+        return c*(7.5625*t*t + .75) + b;
+    } else if (t < (2.5/k)) {
+        t-=2.25/k;
+        return c*(7.5625*t*t + .9375) + b;
     } else {
-        return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+        t-=2.625/k;
+        return c*(7.5625*t*t + .984375) + b;
     }
 }
 + (double)easeInOutBounce:(double)t b:(double)b c:(double)c d:(double)d
