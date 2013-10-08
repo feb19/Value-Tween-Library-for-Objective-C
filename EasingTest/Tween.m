@@ -24,9 +24,9 @@ static NSMutableArray *tweens_ = nil;
     timer_ = nil;
 }
 
-+ (void)addTween:(id)parent tweenId:(int)tweenId startValue:(double)startValue endValue:(double)endValue time:(double)time delay:(double)delay easing:(NSString *)easing startSEL:(SEL)startSEL updateSEL:(SEL)updateSEL endSEL:(SEL)endSEL
++ (TweenObject *)addTween:(id)parent tweenId:(int)tweenId startValue:(double)startValue endValue:(double)endValue time:(double)time delay:(double)delay easing:(NSString *)easing startSEL:(SEL)startSEL updateSEL:(SEL)updateSEL endSEL:(SEL)endSEL
 {
-    [Tween addTween:parent
+    return [Tween addTween:parent
             tweenId:tweenId
          startValue:startValue
            endValue:endValue
@@ -39,14 +39,14 @@ static NSMutableArray *tweens_ = nil;
              endSEL:endSEL];
 }
 
-+ (void)addTween:(id)parent tweenId:(int)tweenId startValue:(double)startValue endValue:(double)endValue time:(double)time delay:(double)delay easing:(NSString *)easing param:(NSMutableDictionary *)param startSEL:(SEL)startSEL updateSEL:(SEL)updateSEL endSEL:(SEL)endSEL
++ (TweenObject *)addTween:(id)parent tweenId:(int)tweenId startValue:(double)startValue endValue:(double)endValue time:(double)time delay:(double)delay easing:(NSString *)easing param:(NSMutableDictionary *)param startSEL:(SEL)startSEL updateSEL:(SEL)updateSEL endSEL:(SEL)endSEL
 {
     if (timer_ == nil) {
         timer_ = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60.0
-                                                  target:self
-                                                selector:@selector(updateAnimations)
-                                                userInfo:nil
-                                                 repeats:TRUE];
+                                                       target:self
+                                                     selector:@selector(updateAnimations)
+                                                     userInfo:nil
+                                                      repeats:TRUE];
         tweens_ = [NSMutableArray array];
     }
     
@@ -87,6 +87,24 @@ static NSMutableArray *tweens_ = nil;
     tween.startTime = currentTime;
     tween.ended = NO;
     [tweens_ addObject:tween];
+    
+    return tween;
+}
+
++ (void)removeTweenForId:(int)tweenId {
+    int count = [tweens_ count];
+    if(count==0) return;
+    
+    TweenObject *tweenObj;
+    for(int i=0; i<count ; i++ ){
+        tweenObj = (TweenObject *) tweens_[i];
+        if (tweenObj.tweenId == tweenId){
+            tweenObj.ended = YES;
+        }
+    }
+}
++ (void)removeTweenForObject:(TweenObject*)tweenObject {
+    tweenObject.ended = YES;
 }
 
 #pragma mark - private
@@ -102,16 +120,16 @@ static NSMutableArray *tweens_ = nil;
                 tween.currentValue = tween.startValue;
                 id selStart = tween.selStart;
                 if (selStart != [NSNull null]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    #pragma clang diagnostic push
+                    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
                     [parent performSelector:NSSelectorFromString(selStart) withObject:tween];
-#pragma clang diagnostic pop
+                    #pragma clang diagnostic pop
                 }
                 tween.started = YES;
             }
             
             t = currentTime - delay - tween.startTime;
-            
+    
             double d = tween.time;
             double b = tween.startValue;
             double c = tween.endValue - b;
@@ -181,31 +199,31 @@ static NSMutableArray *tweens_ = nil;
             } else if ([st isEqualToString:@"easeInOutBounce"]) {
                 currentValue = [Tween easeInOutBounce:t b:b c:c d:d];
             }
-            
+    
             if (t >= d) {
                 tween.currentValue = tween.endValue;
                 id selEnd = tween.selEnd;
                 if (selEnd != [NSNull null]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    #pragma clang diagnostic push
+                    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
                     [parent performSelector:NSSelectorFromString(selEnd) withObject:tween];
-#pragma clang diagnostic pop
+                    #pragma clang diagnostic pop
                 }
                 tween.ended = YES;
             } else {
                 tween.currentValue = currentValue;
                 id selUpdate = tween.selUpdate;
                 if (selUpdate != [NSNull null]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    #pragma clang diagnostic push
+                    #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
                     [parent performSelector:NSSelectorFromString(selUpdate) withObject:tween];
-#pragma clang diagnostic pop
+                    #pragma clang diagnostic pop
                 }
             }
         }
-        
+
     }
-    
+
     int i = [tweens_ count];
     while (i > 0) {
         TweenObject *tween = [tweens_ objectAtIndex:i-1];

@@ -39,6 +39,18 @@ Example Usage
 }
 ```
 
+remove Tween
+
+```
+[Tween addTween:self tweenId:0 ...
+// Remove Tween By tweenId
+[Tween removeTweenForId:0];
+
+TweenObject *tweenObject = [Tween addTween:self tweenId:1 ...
+// Remove Tween by TweenObject
+[Tween removeTweenForObject:tweenObject];
+```
+
 
 Licensed
 =============
@@ -63,3 +75,12 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+Updated
+=============
+Thanks mokagio for solve some problems of llvm5 warning.
+https://github.com/mokagio
+
+Thanks heart for add methods useful.
+https://github.com/heart
