@@ -1,2 +1,3 @@
-xcuserdata
+*.xcuserstate
 *.xcuserdatad
+.DS_Store
