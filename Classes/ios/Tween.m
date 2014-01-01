@@ -92,7 +92,7 @@ static NSMutableArray *tweens_ = nil;
 }
 
 + (void)removeTweenForId:(int)tweenId {
-    int count = [tweens_ count];
+    NSUInteger count = [tweens_ count];
     if(count==0) return;
     
     TweenObject *tweenObj;
@@ -224,7 +224,7 @@ static NSMutableArray *tweens_ = nil;
 
     }
 
-    int i = [tweens_ count];
+    NSUInteger i = [tweens_ count];
     while (i > 0) {
         TweenObject *tween = [tweens_ objectAtIndex:i-1];
         if (tween.ended) {

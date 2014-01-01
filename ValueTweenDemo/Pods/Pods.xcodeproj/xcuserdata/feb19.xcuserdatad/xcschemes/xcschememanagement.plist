@@ -4,15 +4,29 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>EasingTest.xcscheme</key>
+		<key>Pods-ValueTween.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>3</integer>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>ED2A80591680D4E40042FF2A</key>
+		<key>0249A27F922A4D8FA69D568C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>72787415BD264B8D92530BC5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

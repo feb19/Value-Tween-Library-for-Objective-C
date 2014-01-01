@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		704F1A3308834D39A0F2EE77 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D862A938663546DF9A9CCF83 /* libPods.a */; };
 		ED2A805F1680D4E40042FF2A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2A805E1680D4E40042FF2A /* UIKit.framework */; };
 		ED2A80611680D4E40042FF2A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2A80601680D4E40042FF2A /* Foundation.framework */; };
 		ED2A80631680D4E40042FF2A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2A80621680D4E40042FF2A /* CoreGraphics.framework */; };
@@ -18,21 +19,21 @@
 		ED2A80751680D4E40042FF2A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED2A80741680D4E40042FF2A /* Default-568h@2x.png */; };
 		ED2A80781680D4E40042FF2A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2A80771680D4E40042FF2A /* ViewController.m */; };
 		ED2A807B1680D4E40042FF2A /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED2A80791680D4E40042FF2A /* ViewController.xib */; };
-		ED2A80831680D5270042FF2A /* Tween.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2A80821680D5270042FF2A /* Tween.m */; };
 		ED2A80851680D6C30042FF2A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2A80841680D6C30042FF2A /* QuartzCore.framework */; };
-		ED5371261681900100C81C70 /* TweenObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5371251681900100C81C70 /* TweenObject.m */; };
 		ED5371281681AD3900C81C70 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ED5371271681AD3900C81C70 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		ED2A805A1680D4E40042FF2A /* EasingTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasingTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		714202A65332412C84D6EB91 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		D862A938663546DF9A9CCF83 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED2A805A1680D4E40042FF2A /* ValueTweenDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ValueTweenDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED2A805E1680D4E40042FF2A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		ED2A80601680D4E40042FF2A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ED2A80621680D4E40042FF2A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		ED2A80661680D4E40042FF2A /* EasingTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EasingTest-Info.plist"; sourceTree = "<group>"; };
+		ED2A80661680D4E40042FF2A /* ValueTweenDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ValueTweenDemo-Info.plist"; sourceTree = "<group>"; };
 		ED2A80681680D4E40042FF2A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ED2A806A1680D4E40042FF2A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		ED2A806C1680D4E40042FF2A /* EasingTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasingTest-Prefix.pch"; sourceTree = "<group>"; };
+		ED2A806C1680D4E40042FF2A /* ValueTweenDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ValueTweenDemo-Prefix.pch"; sourceTree = "<group>"; };
 		ED2A806D1680D4E40042FF2A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ED2A806E1680D4E40042FF2A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		ED2A80701680D4E40042FF2A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -41,12 +42,8 @@
 		ED2A80761680D4E40042FF2A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		ED2A80771680D4E40042FF2A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		ED2A807A1680D4E40042FF2A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		ED2A80811680D5270042FF2A /* Tween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tween.h; sourceTree = "<group>"; };
-		ED2A80821680D5270042FF2A /* Tween.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tween.m; sourceTree = "<group>"; };
 		ED2A80841680D6C30042FF2A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		ED5371241681900100C81C70 /* TweenObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweenObject.h; sourceTree = "<group>"; };
-		ED5371251681900100C81C70 /* TweenObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweenObject.m; sourceTree = "<group>"; };
-		ED5371271681AD3900C81C70 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		ED5371271681AD3900C81C70 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +55,7 @@
 				ED2A805F1680D4E40042FF2A /* UIKit.framework in Frameworks */,
 				ED2A80611680D4E40042FF2A /* Foundation.framework in Frameworks */,
 				ED2A80631680D4E40042FF2A /* CoreGraphics.framework in Frameworks */,
+				704F1A3308834D39A0F2EE77 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,16 +66,17 @@
 			isa = PBXGroup;
 			children = (
 				ED5371271681AD3900C81C70 /* README.md */,
-				ED2A80641680D4E40042FF2A /* EasingTest */,
+				ED2A80641680D4E40042FF2A /* ValueTweenDemo */,
 				ED2A805D1680D4E40042FF2A /* Frameworks */,
 				ED2A805B1680D4E40042FF2A /* Products */,
+				714202A65332412C84D6EB91 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
 		ED2A805B1680D4E40042FF2A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ED2A805A1680D4E40042FF2A /* EasingTest.app */,
+				ED2A805A1680D4E40042FF2A /* ValueTweenDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,11 +88,12 @@
 				ED2A805E1680D4E40042FF2A /* UIKit.framework */,
 				ED2A80601680D4E40042FF2A /* Foundation.framework */,
 				ED2A80621680D4E40042FF2A /* CoreGraphics.framework */,
+				D862A938663546DF9A9CCF83 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		ED2A80641680D4E40042FF2A /* EasingTest */ = {
+		ED2A80641680D4E40042FF2A /* ValueTweenDemo */ = {
 			isa = PBXGroup;
 			children = (
 				ED2A806D1680D4E40042FF2A /* AppDelegate.h */,
@@ -102,21 +102,17 @@
 				ED2A80771680D4E40042FF2A /* ViewController.m */,
 				ED2A80791680D4E40042FF2A /* ViewController.xib */,
 				ED2A80651680D4E40042FF2A /* Supporting Files */,
-				ED2A80811680D5270042FF2A /* Tween.h */,
-				ED2A80821680D5270042FF2A /* Tween.m */,
-				ED5371241681900100C81C70 /* TweenObject.h */,
-				ED5371251681900100C81C70 /* TweenObject.m */,
 			);
-			path = EasingTest;
+			path = ValueTweenDemo;
 			sourceTree = "<group>";
 		};
 		ED2A80651680D4E40042FF2A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				ED2A80661680D4E40042FF2A /* EasingTest-Info.plist */,
+				ED2A80661680D4E40042FF2A /* ValueTweenDemo-Info.plist */,
 				ED2A80671680D4E40042FF2A /* InfoPlist.strings */,
 				ED2A806A1680D4E40042FF2A /* main.m */,
-				ED2A806C1680D4E40042FF2A /* EasingTest-Prefix.pch */,
+				ED2A806C1680D4E40042FF2A /* ValueTweenDemo-Prefix.pch */,
 				ED2A80701680D4E40042FF2A /* Default.png */,
 				ED2A80721680D4E40042FF2A /* Default@2x.png */,
 				ED2A80741680D4E40042FF2A /* Default-568h@2x.png */,
@@ -127,21 +123,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ED2A80591680D4E40042FF2A /* EasingTest */ = {
+		ED2A80591680D4E40042FF2A /* ValueTweenDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ED2A807E1680D4E40042FF2A /* Build configuration list for PBXNativeTarget "EasingTest" */;
+			buildConfigurationList = ED2A807E1680D4E40042FF2A /* Build configuration list for PBXNativeTarget "ValueTweenDemo" */;
 			buildPhases = (
+				669C07F066F44B0C88D44F3E /* Check Pods Manifest.lock */,
 				ED2A80561680D4E40042FF2A /* Sources */,
 				ED2A80571680D4E40042FF2A /* Frameworks */,
 				ED2A80581680D4E40042FF2A /* Resources */,
+				06B8BCB3E1B248CEB7EB01E5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = EasingTest;
+			name = ValueTweenDemo;
 			productName = EasingTest;
-			productReference = ED2A805A1680D4E40042FF2A /* EasingTest.app */;
+			productReference = ED2A805A1680D4E40042FF2A /* ValueTweenDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -153,7 +151,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Takahashi Nobuhiro";
 			};
-			buildConfigurationList = ED2A80541680D4E40042FF2A /* Build configuration list for PBXProject "EasingTest" */;
+			buildConfigurationList = ED2A80541680D4E40042FF2A /* Build configuration list for PBXProject "ValueTweenDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -165,7 +163,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ED2A80591680D4E40042FF2A /* EasingTest */,
+				ED2A80591680D4E40042FF2A /* ValueTweenDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -186,6 +184,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		06B8BCB3E1B248CEB7EB01E5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		669C07F066F44B0C88D44F3E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ED2A80561680D4E40042FF2A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -194,8 +225,6 @@
 				ED2A806B1680D4E40042FF2A /* main.m in Sources */,
 				ED2A806F1680D4E40042FF2A /* AppDelegate.m in Sources */,
 				ED2A80781680D4E40042FF2A /* ViewController.m in Sources */,
-				ED2A80831680D5270042FF2A /* Tween.m in Sources */,
-				ED5371261681900100C81C70 /* TweenObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,24 +302,26 @@
 		};
 		ED2A807F1680D4E40042FF2A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 714202A65332412C84D6EB91 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EasingTest/EasingTest-Prefix.pch";
-				INFOPLIST_FILE = "EasingTest/EasingTest-Info.plist";
+				GCC_PREFIX_HEADER = "ValueTweenDemo/ValueTweenDemo-Prefix.pch";
+				INFOPLIST_FILE = "ValueTweenDemo/ValueTweenDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ValueTweenDemo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		ED2A80801680D4E40042FF2A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 714202A65332412C84D6EB91 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "EasingTest/EasingTest-Prefix.pch";
-				INFOPLIST_FILE = "EasingTest/EasingTest-Info.plist";
+				GCC_PREFIX_HEADER = "ValueTweenDemo/ValueTweenDemo-Prefix.pch";
+				INFOPLIST_FILE = "ValueTweenDemo/ValueTweenDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ValueTweenDemo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -298,7 +329,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ED2A80541680D4E40042FF2A /* Build configuration list for PBXProject "EasingTest" */ = {
+		ED2A80541680D4E40042FF2A /* Build configuration list for PBXProject "ValueTweenDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED2A807C1680D4E40042FF2A /* Debug */,
@@ -307,7 +338,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ED2A807E1680D4E40042FF2A /* Build configuration list for PBXNativeTarget "EasingTest" */ = {
+		ED2A807E1680D4E40042FF2A /* Build configuration list for PBXNativeTarget "ValueTweenDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED2A807F1680D4E40042FF2A /* Debug */,

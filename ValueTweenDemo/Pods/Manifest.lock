@@ -1,0 +1,14 @@
+PODS:
+  - ValueTween (0.0.1)
+
+DEPENDENCIES:
+  - ValueTween (from `..`)
+
+EXTERNAL SOURCES:
+  ValueTween:
+    :path: ..
+
+SPEC CHECKSUMS:
+  ValueTween: 7b2e53b2cdfd700c097c80269d421f61ea72cf30
+
+COCOAPODS: 0.29.0

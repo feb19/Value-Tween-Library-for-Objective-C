@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0450"
+   LastUpgradeVersion = "0500"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ED2A80591680D4E40042FF2A"
-               BuildableName = "EasingTest.app"
-               BlueprintName = "EasingTest"
-               ReferencedContainer = "container:EasingTest.xcodeproj">
+               BlueprintIdentifier = "72787415BD264B8D92530BC5"
+               BuildableName = "libPods-ValueTween.a"
+               BlueprintName = "Pods-ValueTween"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       buildConfiguration = "Debug">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ED2A80591680D4E40042FF2A"
-            BuildableName = "EasingTest.app"
-            BlueprintName = "EasingTest"
-            ReferencedContainer = "container:EasingTest.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -48,15 +39,6 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ED2A80591680D4E40042FF2A"
-            BuildableName = "EasingTest.app"
-            BlueprintName = "EasingTest"
-            ReferencedContainer = "container:EasingTest.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -66,15 +48,6 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ED2A80591680D4E40042FF2A"
-            BuildableName = "EasingTest.app"
-            BlueprintName = "EasingTest"
-            ReferencedContainer = "container:EasingTest.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
